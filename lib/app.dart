@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:harmony/src/screens/login_screen.dart';
-import 'package:harmony/src/screens/signup_screen.dart';
+import 'package:harmony/src/screens/home_screen.dart';
 import 'package:harmony/src/screens/splash_screen.dart';
 
 import 'src/theme/app_theme.dart';

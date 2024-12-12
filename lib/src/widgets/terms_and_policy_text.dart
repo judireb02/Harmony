@@ -44,7 +44,7 @@ class TermsAndPolicyText extends StatelessWidget {
                 TextSpan(
                   text: '.',
                   style: AppStyles.tertiaryText
-                      .merge(TextStyle(color: Colors.black)),
+                      .merge(const TextStyle(color: Colors.black)),
                 ),
               ],
             ),

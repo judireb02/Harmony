@@ -4,7 +4,7 @@ class AppIcon extends StatelessWidget {
   final double width;
   final double height;
 
-  const AppIcon({Key? key, required this.width, required this.height}) : super(key: key);
+  const AppIcon({super.key, required this.width, required this.height});
 
   @override
   Widget build(BuildContext context) {

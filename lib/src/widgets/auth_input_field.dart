@@ -9,14 +9,16 @@ class AuthInputField extends StatelessWidget {
   final String hintText;
   final bool isObscure;
   final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   const AuthInputField({
-    Key? key,
+    super.key,
     required this.label,
     required this.hintText,
     this.isObscure = false,
     this.controller,
-  }) : super(key: key);
+    this.validator,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +34,12 @@ class AuthInputField extends StatelessWidget {
             ),
           ),
         ),
-        TextField(
+        TextFormField(
           cursorColor: Theme.of(context).primaryColor,
           controller: controller,
           cursorHeight: 15.sp,
           style: AppStyles.secondaryText.merge(
-            TextStyle(color: AppColors.fieldInputColor),
+            const TextStyle(color: AppColors.fieldInputColor),
           ),
           obscureText: isObscure,
           obscuringCharacter: '*',
@@ -68,6 +70,7 @@ class AuthInputField extends StatelessWidget {
               borderRadius: BorderRadius.circular(10.r),
             ),
           ),
+          validator: validator,
         )
       ],
     );

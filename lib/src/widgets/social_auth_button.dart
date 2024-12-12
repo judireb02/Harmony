@@ -5,18 +5,22 @@ import '../theme/app_colors.dart';
 
 class AuthSocialButton extends StatelessWidget {
   final String imagePath;
-  final VoidCallback onTap;
+  final Future<void> Function()? onTap;
 
   const AuthSocialButton({
-    Key? key,
+    super.key,
     required this.imagePath,
-    required this.onTap,
-  }) : super(key: key);
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: onTap != null
+          ? () async {
+              await onTap!();
+            }
+          : null,
       child: Container(
         width: 86.w,
         height: 42.h,

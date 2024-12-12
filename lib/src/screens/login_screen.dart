@@ -1,27 +1,26 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:harmony/src/screens/signup_screen.dart';
-import 'package:harmony/src/theme/app_colors.dart';
-import 'package:harmony/src/theme/app_styles.dart';
-import 'package:harmony/src/widgets/app_logo.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:harmony/src/widgets/app_logo.dart';
+import '../blocs/Authentication/auth_bloc.dart';
+import '../theme/app_colors.dart';
+import '../theme/app_styles.dart';
 import '../widgets/auth_input_field.dart';
 import '../widgets/social_auth_button.dart';
+import 'signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _emailController = TextEditingController();
-    TextEditingController _passwordController = TextEditingController();
-
-    var screenWidth = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SizedBox(
-        width: screenWidth,
+        width: MediaQuery.sizeOf(context).width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -77,15 +76,15 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   AuthSocialButton(
                     imagePath: "assets/images/google.png",
-                    onTap: () {},
+                    onTap: () async{},
                   ),
                   AuthSocialButton(
                     imagePath: "assets/images/facebook.png",
-                    onTap: () {},
+                    onTap: () async{},
                   ),
                   AuthSocialButton(
                     imagePath: "assets/images/twitter.png",
-                    onTap: () {},
+                    onTap: () async{},
                   ),
                 ],
               ),
@@ -122,3 +121,4 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+
