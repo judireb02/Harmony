@@ -16,6 +16,8 @@ class AppColors {
   static const captionTextColor = Color(0xffC5BDBD);
   static const tertiaryTextColor = Color(0xff383737);
   static const chatTextColor = Color(0xff007665);
+  static const Color lightReadMoreTextColor = Color(0xff4A90E2);
+  static const Color darkReadMoreTextColor = Color(0xff3B5998);
 
   static const darkPrimaryColor = Color(0xFF367D74);
   static const darkBackgroundColor = Color(0xFF121212);

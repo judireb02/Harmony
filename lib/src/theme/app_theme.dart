@@ -12,6 +12,11 @@ class AppTheme {
             .merge(const TextStyle(color: AppColors.headerTextColor)),
         titleSmall: AppStyles.captionTextStyle
             .merge(const TextStyle(color: AppColors.captionTextColor)),
+        labelLarge: AppStyles.subHeading.merge(
+          TextStyle(
+            color: AppColors.darkBackgroundColor,
+          ),
+        ),
         labelMedium: AppStyles.subTextStyle
             .merge(const TextStyle(color: AppColors.secondaryTextColor)),
         labelSmall: AppStyles.hintTextStyle
@@ -36,6 +41,11 @@ class AppTheme {
             .merge(const TextStyle(color: AppColors.headerTextColorOnDark)),
         titleSmall: AppStyles.captionTextStyle
             .merge(const TextStyle(color: AppColors.captionTextColor)),
+        labelLarge: AppStyles.subHeading.merge(
+          TextStyle(
+            color: AppColors.secondaryTextColorOnDark,
+          ),
+        ),
         labelMedium: AppStyles.subTextStyle
             .merge(const TextStyle(color: AppColors.secondaryTextColorOnDark)),
         labelSmall: AppStyles.hintTextStyle

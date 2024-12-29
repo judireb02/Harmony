@@ -12,7 +12,12 @@
           "package_name": "com.example.harmony"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "782380864868-5i2rvskk110535709od4ogcfchivamg7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDpjccNcLRY4aQpVeJBD-y5nFZTFS3LOJg"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "782380864868-5i2rvskk110535709od4ogcfchivamg7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "782380864868-ace299mq0i1he8m6unv2jadsj0d103mq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.harmony"
+              }
+            }
+          ]
         }
       }
     }

@@ -1,13 +1,23 @@
-// blocs/navigation/navigation_bloc.dart
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:harmony/src/blocs/navigation/navigation_state.dart';
-
 import 'navigation_event.dart';
+import 'navigation_state.dart';
 
 class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
-  NavigationBloc() : super(NavigationState.profile) {
+  NavigationBloc() : super(NavigationState.splash) {
     on<NavigationEvent>((event, emit) {
       switch (event) {
+        case NavigationEvent.login:
+          emit(NavigationState.login);
+          break;
+        case NavigationEvent.splash:
+          emit(NavigationState.splash);
+          break;
+        case NavigationEvent.signup:
+          emit(NavigationState.signup);
+          break;
+        case NavigationEvent.home:
+          emit(NavigationState.home);
+          break;
         case NavigationEvent.profile:
           emit(NavigationState.profile);
           break;

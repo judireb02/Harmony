@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:harmony/src/screens/chat_details_screen.dart';
+import '../screens/chat_details_screen.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_styles.dart';
 import 'audio_waveform.dart';
@@ -56,16 +56,22 @@ class ChatTileState extends State<ChatTile> {
                 : Alignment.centerRight,
             child: Container(
               width: constraints.maxWidth - 48.w,
-              margin: EdgeInsets.symmetric(horizontal: 12.w),
+              margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
               decoration: BoxDecoration(
                 color: widget.isReceived == false
                     ? Theme.of(context).primaryColor
                     : AppColors.chatFillColor,
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(50.r),
-                  topLeft: Radius.circular(50.r),
-                  bottomRight: Radius.circular(50.r),
-                ),
+                borderRadius: widget.isReceived == false
+                    ? BorderRadius.only(
+                        topRight: Radius.circular(50.r),
+                        topLeft: Radius.circular(50.r),
+                        bottomLeft: Radius.circular(50.r),
+                      )
+                    : BorderRadius.only(
+                        topRight: Radius.circular(50.r),
+                        topLeft: Radius.circular(50.r),
+                        bottomRight: Radius.circular(50.r),
+                      ),
               ),
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
@@ -78,9 +84,7 @@ class ChatTileState extends State<ChatTile> {
                             widget.isCurrentlyPlaying
                                 ? Icons.pause
                                 : Icons.play_arrow,
-                            color: widget.isReceived
-                                ? AppColors.tertiaryTextColor
-                                : AppColors.chatTextColor,
+                            color: AppColors.tertiaryTextColor,
                           ),
                           onPressed: () {
                             widget.onPlayPausePressed(widget.message);
@@ -93,7 +97,9 @@ class ChatTileState extends State<ChatTile> {
                                 value: widget.playbackProgress,
                                 backgroundColor: Colors.grey.shade300,
                                 valueColor: AlwaysStoppedAnimation(
-                                    Theme.of(context).primaryColor),
+                                    widget.isReceived
+                                        ? Theme.of(context).primaryColor
+                                        : AppColors.darkBackgroundColor),
                               ),
                               Row(
                                 mainAxisAlignment:
@@ -139,32 +145,35 @@ class ChatTileState extends State<ChatTile> {
               widget.isReceived ? Alignment.centerLeft : Alignment.centerRight,
           child: Container(
             width: textWidth + 48.w,
-            margin: EdgeInsets.symmetric(horizontal: 12.w),
+            margin: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
             decoration: BoxDecoration(
               color: widget.isReceived == false
                   ? Theme.of(context).primaryColor
                   : AppColors.chatFillColor,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(50.r),
-                topLeft: Radius.circular(50.r),
-                bottomRight: Radius.circular(50.r),
-              ),
+              borderRadius: widget.isReceived == false
+                  ? BorderRadius.only(
+                      topRight: Radius.circular(50.r),
+                      topLeft: Radius.circular(50.r),
+                      bottomLeft: Radius.circular(50.r),
+                    )
+                  : BorderRadius.only(
+                      topRight: Radius.circular(50.r),
+                      topLeft: Radius.circular(50.r),
+                      bottomRight: Radius.circular(50.r),
+                    ),
             ),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     widget.text,
-                    style: AppStyles.subHeading.merge(
-                      TextStyle(
-                        color: widget.isReceived == true
-                            ? AppColors.tertiaryTextColor
-                            : AppColors.chatTextColor,
-                      ),
-                    ),
+                    style: widget.isReceived
+                        ? Theme.of(context).primaryTextTheme.labelLarge?.merge(
+                            TextStyle(color: AppColors.tertiaryTextColor))
+                        : Theme.of(context).primaryTextTheme.labelLarge,
                     maxLines: isExpanded ? null : 5,
                     overflow: isExpanded
                         ? TextOverflow.visible
@@ -178,12 +187,15 @@ class ChatTileState extends State<ChatTile> {
                         });
                       },
                       child: Padding(
-                        padding: EdgeInsets.only(top: 8.h),
+                        padding: EdgeInsets.only(top: 8.h, bottom: 8.h),
                         child: Text(
                           isExpanded ? 'Show Less' : 'Read More',
                           textAlign: TextAlign.end,
                           style: TextStyle(
-                            color: Theme.of(context).primaryColor,
+                            color:
+                                Theme.of(context).brightness == Brightness.light
+                                    ? AppColors.lightReadMoreTextColor
+                                    : AppColors.darkReadMoreTextColor,
                             fontSize: 14.0.sp,
                           ),
                         ),

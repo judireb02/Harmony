@@ -367,12 +367,12 @@ class ChatDetailsScreenState extends State<ChatDetailsScreen> {
               itemBuilder: (context, index) {
                 final message = _messages[index];
                 return Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 8.0, horizontal: 16.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 2.h, horizontal: 12.w),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ProfileImage(image: widget.chat.profileImageUrl),
+                      // ProfileImage(image: widget.chat.profileImageUrl),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -396,7 +396,7 @@ class ChatDetailsScreenState extends State<ChatDetailsScreen> {
                                   : Duration.zero,
                               onPlayPausePressed: (message) =>
                                   _playAudioMessage(message),
-                              isReceived: true, // or false based on your logic
+                              isReceived: true,
                             )
                           ],
                         ),

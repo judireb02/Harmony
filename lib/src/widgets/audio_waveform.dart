@@ -1,7 +1,5 @@
-import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_sound/flutter_sound.dart';
 import 'package:path/path.dart' as path;
 
 class AudioWaveformWidget extends StatefulWidget {
@@ -10,11 +8,11 @@ class AudioWaveformWidget extends StatefulWidget {
   final Color primaryColor;
 
   const AudioWaveformWidget({
-    Key? key,
+    super.key,
     required this.audioFilePath,
     required this.isPlaying,
     required this.primaryColor,
-  }) : super(key: key);
+  });
 
   @override
   _AudioWaveformWidgetState createState() => _AudioWaveformWidgetState();

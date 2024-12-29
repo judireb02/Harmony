@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../widgets/custom_bottom_bar.dart';
 import 'camera_screen.dart';
 import 'chatlist_screen.dart';
 import 'profile_screen.dart';
 import 'settings_screen.dart';
-
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,16 +22,13 @@ class _HomeScreenState extends State<HomeScreen> {
     "assets/images/settings.png"
   ];
 
-  // List of screens corresponding to nav items
   late List<Widget> _screens;
 
-  // Current selected screen index
   int _currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    // Initialize screens list
     _screens = [
       const ProfileScreen(),
       const ChatlistScreen(),
@@ -60,9 +57,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-
-
-
-
-

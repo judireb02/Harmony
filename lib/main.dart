@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harmony/app.dart';
 
 import 'firebase_options.dart';
-import 'src/blocs/Authentication/auth_bloc.dart';
-import 'src/repositories/firebase_authentication_repository.dart';
+import 'src/blocs/authentication/auth_bloc.dart';
+import 'src/repositories/authentication/firebase_authentication_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../repositories/firebase_authentication_repository.dart';
+import '../../repositories/authentication/firebase_authentication_repository.dart';
 
 class AuthState {
   final bool isLoading;
@@ -22,25 +22,52 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this._authRepository) : super(AuthState());
 
   Future<void> signInWithEmail(String email, String password) async {
-    emit(state.copyWith(isLoading: true, errorMessage: null));
+    emit(state.copyWith(
+      isLoading: true,
+      errorMessage: null,
+    ));
     try {
       await _authRepository.signInWithEmailAndPassword(email, password);
-      // Handle navigation to home screen (via context, router, or events)
-    } catch (e) {
-      emit(state.copyWith(errorMessage: 'Sign in failed. Please check credentials.'));
-    } finally {
       emit(state.copyWith(isLoading: false));
+    } catch (e) {
+      emit(state.copyWith(
+        isLoading: false,
+        errorMessage: e.toString(),
+      ));
+    }
+  }
+
+  Future<void> signUpWithEmail(String email, String password) async {
+    emit(state.copyWith(
+      isLoading: true,
+      errorMessage: null,
+    ));
+    try {
+      await _authRepository.signUpWithEmailAndPassword(email, password);
+      emit(state.copyWith(
+        isLoading: false,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        isLoading: false,
+        errorMessage: e.toString(),
+      ));
     }
   }
 
   Future<void> signInWithGoogle() async {
-    emit(state.copyWith(isLoading: true, errorMessage: null));
+    emit(state.copyWith(
+      isLoading: true,
+      errorMessage: null,
+    ));
     try {
       await _authRepository.signInWithGoogle();
-    } catch (e) {
-      emit(state.copyWith(errorMessage: 'Google Sign In failed. Please try again.'));
-    } finally {
       emit(state.copyWith(isLoading: false));
+    } catch (e) {
+      emit(state.copyWith(
+        isLoading: false,
+        errorMessage: e.toString(),
+      ));
     }
   }
 
@@ -48,10 +75,12 @@ class AuthCubit extends Cubit<AuthState> {
     emit(state.copyWith(isLoading: true, errorMessage: null));
     try {
       await _authRepository.signInWithFacebook();
-    } catch (e) {
-      emit(state.copyWith(errorMessage: 'Facebook Sign In failed. Please try again.'));
-    } finally {
       emit(state.copyWith(isLoading: false));
+    } catch (e) {
+      emit(state.copyWith(
+        isLoading: false,
+        errorMessage: e.toString(),
+      ));
     }
   }
 
@@ -59,10 +88,25 @@ class AuthCubit extends Cubit<AuthState> {
     emit(state.copyWith(isLoading: true, errorMessage: null));
     try {
       await _authRepository.signInWithTwitter();
-    } catch (e) {
-      emit(state.copyWith(errorMessage: 'Twitter Sign In failed. Please try again.'));
-    } finally {
       emit(state.copyWith(isLoading: false));
+    } catch (e) {
+      emit(state.copyWith(
+        isLoading: false,
+        errorMessage: e.toString(),
+      ));
+    }
+  }
+
+  Future<void> signOut() async {
+    emit(state.copyWith(isLoading: true, errorMessage: null));
+    try {
+      await _authRepository.signOut();
+      emit(state.copyWith(isLoading: false));
+    } catch (e) {
+      emit(state.copyWith(
+        isLoading: false,
+        errorMessage: e.toString(),
+      ));
     }
   }
 }

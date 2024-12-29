@@ -97,7 +97,7 @@ class ChatlistScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Container(
                     margin:
-                        EdgeInsets.only(right: 17.w, left: 12.w, bottom: 39.h),
+                        EdgeInsets.only(right: 10.w, left: 10.w, bottom: 39.h),
                     height: 54.h,
                     width: double.infinity,
                     child: GestureDetector(
